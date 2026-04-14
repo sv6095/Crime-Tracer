@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="/LogoWBG.webp" />
+    
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400;0,700;1,400;1,700&family=Space+Grotesk:wght@300;400;500;600;700&family=Anek+Telugu:wght@300;400;500;600;700&family=Anek+Kannada:wght@300;400;500;600;700&family=Anek+Devanagari:wght@300;400;500;600;700&family=Anek+Tamil:wght@300;400;500;600;700&family=Anek+Malayalam:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <title>Server Side Crime Tracer</title>
+    
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+
+      html { height: 100%; scroll-behavior: smooth; }
+
+      body {
+        min-height: 100%;
+        font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background-color: #0C0908;
+        color: #FFFFFF;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      #root { min-height: 100vh; }
+
+      /* Full-screen loading overlay (visible until React hydrates) */
+      .loading-container {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #0C0908;
+        z-index: 9999;
+      }
+
+      .loading-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+        padding: 18px 22px;
+        border-radius: 12px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(255,255,255,0.06);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+      }
+
+      .loading-spinner {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        border: 4px solid #FFFFFF;      /* white ring */
+        border-top-color: transparent;  /* creates rotating gap */
+        background-color: #0C0908;
+        animation: spin 0.95s linear infinite;
+        box-sizing: border-box;
+      }
+
+      @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+      .loading-text {
+        font-family: 'Alegreya', serif;
+        color: #FFFFFF;
+        font-size: 14px;
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- Loading fallback (removed by React on mount) -->
+      <div class="loading-container" id="initial-loading">
+        <div class="loading-card" role="status" aria-live="polite">
+          <div class="loading-spinner" aria-hidden="true"></div>
+          <div class="loading-text">Loading Crime Tracer...</div>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Remove initial loading overlay after 5s fallback (React will remove it on real mount)
+      // This script is defensive — it won't block hydration.
+      setTimeout(() => {
+        const el = document.getElementById('initial-loading');
+        if (el) el.style.display = 'none';
+      }, 5000);
+    </script>
+  </body>
+</html>

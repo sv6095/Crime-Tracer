@@ -1,0 +1,249 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..900;1,400..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS Variables */
+:root {
+  --primary-blue: #2563eb;
+  --primary-blue-dark: #1d4ed8;
+  --secondary-gray: #64748b;
+  --success-green: #10b981;
+  --warning-orange: #f59e0b;
+  --error-red: #ef4444;
+
+  /* spinner bg & main bg */
+  --background-dark: #0C0908;
+  --text-on-dark: #FFFFFF;
+  --spinner-border: #FFFFFF;
+  --spinner-bg: #0C0908;
+}
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  color: var(--text-on-dark);
+  background-color: var(--background-dark);
+}
+
+/* Headings use Alegreya */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Alegreya', serif;
+  color: var(--text-on-dark);
+  margin: 0;
+}
+
+/* Custom Scrollbar (keeps contrast subtle on dark bg) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.03);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.06);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.12);
+}
+
+/* Focus Styles */
+*:focus-visible {
+  outline: 2px solid rgba(255,255,255,0.12);
+  outline-offset: 2px;
+}
+
+/* Animation Classes */
+.fade-in {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+.scale-in {
+  animation: scaleIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Utility Classes */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.shadow-soft {
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.4),
+    0 2px 4px -1px rgba(0, 0, 0, 0.3);
+}
+
+.shadow-elevated {
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.45),
+    0 10px 10px -5px rgba(0, 0, 0, 0.35);
+}
+
+/* Button Styles */
+.btn {
+  @apply px-4 py-2 rounded-lg font-medium transition-all duration-200
+    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-0;
+}
+
+/* These depend on custom colors in tailwind.config.js (see below) */
+.btn-primary {
+  @apply btn bg-primary-600 hover:bg-primary-700 text-white focus-visible:ring-primary-500;
+}
+
+.btn-secondary {
+  @apply btn bg-gray-800 hover:bg-gray-700 text-white focus-visible:ring-gray-500;
+}
+
+.btn-success {
+  @apply btn bg-green-600 hover:bg-green-700 text-white focus-visible:ring-green-500;
+}
+
+.btn-danger {
+  @apply btn bg-red-600 hover:bg-red-700 text-white focus-visible:ring-red-500;
+}
+
+/* Card Styles */
+.card {
+  @apply bg-transparent rounded-lg border border-white/10 overflow-hidden;
+}
+
+.card-header {
+  @apply px-6 py-4 border-b border-white/10;
+}
+
+.card-body {
+  @apply px-6 py-4;
+}
+
+.card-footer {
+  @apply px-6 py-4 border-t border-white/10;
+}
+
+/* Form Styles */
+.form-input {
+  @apply w-full px-3 py-2 rounded-lg bg-white/5 border border-white/10
+    text-white placeholder-white/60 focus:outline-none focus:ring-2 focus:ring-white/20;
+}
+
+.form-label {
+  @apply block text-sm font-medium text-white mb-2;
+}
+
+.form-error {
+  @apply text-red-400 text-sm mt-1;
+}
+
+/* Status Badges */
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.badge-pending {
+  @apply badge bg-yellow-100/10 text-yellow-300;
+}
+
+.badge-investigating {
+  @apply badge bg-blue-100/10 text-blue-300;
+}
+
+.badge-resolved {
+  @apply badge bg-green-100/10 text-green-300;
+}
+
+.badge-closed {
+  @apply badge bg-gray-100/10 text-gray-300;
+}
+
+/* Loading Spinner */
+.spinner {
+  @apply animate-spin rounded-full;
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--spinner-border);
+  border-top-color: transparent;
+  background-color: var(--spinner-bg);
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+/* Responsive Utilities */
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
+}
+
+/* Dropdown z-index fix */
+.station-selector-dropdown {
+  position: relative;
+  z-index: 9999;
+}
+
+.station-selector-dropdown > div {
+  position: relative;
+  z-index: 9999;
+}
+
+/* Print Styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    @apply text-black bg-white;
+  }
+}

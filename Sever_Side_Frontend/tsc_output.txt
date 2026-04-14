@@ -1,0 +1,43 @@
+﻿src/components/Navigation.tsx(6,3): error TS6133: 'FileText' is declared but its value is never read.
+src/components/Navigation.tsx(7,3): error TS6133: 'Search' is declared but its value is never read.
+src/components/StationManagement.tsx(4,3): error TS2305: Module '"../hooks/useAdminApi"' has no exported member 'useStations'.
+src/components/StationManagement.tsx(5,3): error TS2305: Module '"../hooks/useAdminApi"' has no exported member 'useCreateStation'.
+src/components/StationManagement.tsx(6,3): error TS2305: Module '"../hooks/useAdminApi"' has no exported member 'useUpdateStation'.
+src/components/StationManagement.tsx(7,3): error TS2305: Module '"../hooks/useAdminApi"' has no exported member 'useDeleteStation'.
+src/components/StationManagement.tsx(8,8): error TS2305: Module '"../hooks/useAdminApi"' has no exported member 'Station'.
+src/components/StationManagement.tsx(9,8): error TS2305: Module '"../hooks/useAdminApi"' has no exported member 'CreateStationData'.
+src/components/StationManagement.tsx(10,8): error TS2305: Module '"../hooks/useAdminApi"' has no exported member 'UpdateStationData'.
+src/components/StationManagement.tsx(26,3): error TS6133: 'Map' is declared but its value is never read.
+src/components/StationManagement.tsx(113,44): error TS7006: Parameter 'station' implicitly has an 'any' type.
+src/components/StationManagement.tsx(263,33): error TS7006: Parameter 'station' implicitly has an 'any' type.
+src/components/StationManagement.tsx(263,42): error TS7006: Parameter 'index' implicitly has an 'any' type.
+src/components/StationSelector.tsx(59,5): error TS2339: Property 'isLoading' does not exist on type '{ detectedStation: Station | null; loading: boolean; error: string | null; detect: () => Promise<void>; location: any; locationError: string | null; isDetecting: boolean; detectLocation: () => Promise<...>; nearestStations: Station[]; }'.
+src/components/StationSelector.tsx(59,16): error TS6133: 'isLoadingNearest' is declared but its value is never read.
+src/components/StationSelector.tsx(92,14): error TS2345: Argument of type 'string | number' is not assignable to parameter of type 'number | null'.
+  Type 'string' is not assignable to type 'number'.
+src/components/ui/demo.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/ui/hero-with-image-text-and-two-buttons.tsx(1,1): error TS6133: 'React' is declared but its value is never read.
+src/components/ui/hero-with-image-text-and-two-buttons.tsx(2,10): error TS6133: 'MoveRight' is declared but its value is never read.
+src/components/ui/hero-with-image-text-and-two-buttons.tsx(4,1): error TS6133: 'Badge' is declared but its value is never read.
+src/components/UserManagement.tsx(5,3): error TS2724: '"../hooks/useAdminApi"' has no exported member named 'useCreatePoliceUser'. Did you mean 'usePoliceUsers'?
+src/components/UserManagement.tsx(6,3): error TS2724: '"../hooks/useAdminApi"' has no exported member named 'useUpdatePoliceUser'. Did you mean 'usePoliceUsers'?
+src/components/UserManagement.tsx(7,3): error TS2724: '"../hooks/useAdminApi"' has no exported member named 'useDeletePoliceUser'. Did you mean 'usePoliceUsers'?
+src/components/UserManagement.tsx(8,8): error TS2305: Module '"../hooks/useAdminApi"' has no exported member 'PoliceUser'.
+src/components/UserManagement.tsx(9,8): error TS2305: Module '"../hooks/useAdminApi"' has no exported member 'CreatePoliceUserData'.
+src/components/UserManagement.tsx(10,8): error TS2305: Module '"../hooks/useAdminApi"' has no exported member 'UpdatePoliceUserData'.
+src/components/UserManagement.tsx(19,3): error TS6133: 'Filter' is declared but its value is never read.
+src/components/UserManagement.tsx(21,3): error TS6133: 'Eye' is declared but its value is never read.
+src/components/UserManagement.tsx(23,3): error TS6133: 'Building2' is declared but its value is never read.
+src/components/UserManagement.tsx(29,3): error TS6133: 'Save' is declared but its value is never read.
+src/components/UserManagement.tsx(116,44): error TS2339: Property 'approved' does not exist on type 'PendingPoliceUser'.
+src/components/UserManagement.tsx(117,44): error TS2339: Property 'approved' does not exist on type 'PendingPoliceUser'.
+src/components/UserManagement.tsx(370,30): error TS2339: Property 'approved' does not exist on type 'PendingPoliceUser'.
+src/components/UserManagement.tsx(372,31): error TS2339: Property 'approved' does not exist on type 'PendingPoliceUser'.
+src/contexts/AuthContext.tsx(72,62): error TS6133: 'role' is declared but its value is never read.
+src/hooks/useAdminApi.ts(72,50): error TS6133: 'params' is declared but its value is never read.
+src/hooks/useCopProfile.ts(61,11): error TS6133: 'token' is declared but its value is never read.
+src/hooks/useStations.ts(71,38): error TS6133: 'options' is declared but its value is never read.
+src/lib/api.ts(8,3): error TS2580: Cannot find name 'process'. Do you need to install type definitions for node? Try `npm i --save-dev @types/node`.
+src/Pages/AuthCop.tsx(5,1): error TS6133: 'motion' is declared but its value is never read.
+src/Pages/AuthCop.tsx(98,16): error TS6133: 'regErrors' is declared but its value is never read.
+src/Pages/AuthCop.tsx(168,9): error TS6133: 'regPassword' is declared but its value is never read.
