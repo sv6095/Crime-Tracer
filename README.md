@@ -157,26 +157,20 @@ The RAG-HGAT (Retrieval-Augmented Generation with Hierarchical Graph Attention N
 #### Section F1-Micro Score Progression
 The model demonstrates rapid learning in the first 10 epochs, achieving over 85% F1-score. Training and validation curves show excellent convergence, indicating absence of significant overfitting. The model stabilizes around 98.57% F1-score by epoch 30.
 
-![Section F1-Micro Score Progression](Backend_Model/Images/f1_progression.png)
+![Section F1-Micro Score Progression](Backend_Model/Images/hamming_accuracy_progression.png)
 
 #### Crime Classification Accuracy Progression
 Crime type classification achieves near-perfect accuracy within the first 5 epochs (99%+), stabilizing at essentially 100% accuracy. This demonstrates the model's exceptional ability to categorize crime types even with limited training data.
 
-![Crime Classification Accuracy Progression](Backend_Model/Images/crime_accuracy.png)
+![Crime Classification Accuracy Progression](Backend_Model/Images/crime_confusion_matrix_normalized.png)
 
 #### Embedding Space Visualization
 
-**t-SNE: Embeddings Colored by Primary BNS Section**
+**t-SNE: Embeddings Colored by Primary BNS Section & Crime Type**
 
-The t-SNE visualization reveals that the model's internal representations form well-separated clusters for different legal sections. Sections with related legal meanings naturally cluster together, demonstrating that the model learns meaningful legal relationships. For instance, sexual offense sections (51-56, shown in blue/cyan) form tight clusters, as do theft-related sections (shown in orange).
+The t-SNE visualization reveals that the model's internal representations form well-separated clusters for different legal sections and crime types. Sections with related legal meanings naturally cluster together, demonstrating that the model learns meaningful legal relationships. The visualization shows both BNS section classifications (upper plot, colored by section index) and crime type classifications (lower plot, colored by crime category). For instance, sexual offense sections and theft-related sections form tight, distinct clusters.
 
-![t-SNE BNS Section Embeddings](Backend_Model/Images/tsne_bns_sections.png)
-
-**t-SNE: Embeddings Colored by Crime Type**
-
-Crime type embeddings show clear separation across the embedding space, confirming that the model learns distinct patterns for different crime categories. The hierarchical structure suggests the model captures both fine-grained legal distinctions and broader crime type classifications.
-
-![t-SNE Crime Type Embeddings](Backend_Model/Images/tsne_crime_types.png)
+![t-SNE Embeddings Visualization](Backend_Model/Images/05_tsne_embeddings_visualization.png)
 
 ### Complete Architecture Diagram
 
@@ -188,7 +182,7 @@ The following diagram illustrates the complete RAG-HGAT architecture flow:
 1. **Input**: Crime complaint text enters the system
 2. **Dual Path Processing**:
    - **Left Path**: Legal-BERT encoder converts text to 768-dim semantic embeddings
-   - **Right Path**: BNS Knowledge Base and Sentence Transformer perform Top-20 retrieval
+   - **Right Path**: BNS Knowledge Base and SentenceRAG_HGAT_Architecture_IEEErm Top-20 retrieval
 3. **Feature Fusion**: RAG scores (scaled 10x) concatenated with BERT embeddings (825-dim total)
 4. **Graph Processing**: 57 BNS section nodes create relationship graph with 278 edges
 5. **Multi-Head Attention**: Case-level multi-head attention with 4 parallel heads
