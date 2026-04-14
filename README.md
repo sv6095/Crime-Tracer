@@ -461,12 +461,6 @@ Complete comparison of all key training metrics side-by-side, including accuracy
 
 ![Training Metrics Comparison](Backend_Model/Images/training_metrics_comparison.png)
 
-#### Crime Type Confusion Matrix
-
-Confusion matrix for crime type classification (13 classes), showing the model's performance on single-label crime category prediction with near-perfect diagonal values.
-
-![Crime Type Confusion Matrix](Backend_Model/Images/crime_confusion_matrix.png)
-
 #### Section Performance Analysis
 
 Per-section performance metrics showing how the model performs individually on different BNS sections, highlighting strengths and areas for improvement.
