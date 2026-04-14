@@ -154,15 +154,10 @@ The RAG-HGAT (Retrieval-Augmented Generation with Hierarchical Graph Attention N
 
 ### Model Performance Visualization
 
-#### Section F1-Micro Score Progression
+#### Training Metrics Progression
 The model demonstrates rapid learning in the first 10 epochs, achieving over 85% F1-score. Training and validation curves show excellent convergence, indicating absence of significant overfitting. The model stabilizes around 98.57% F1-score by epoch 30.
 
-![Section F1-Micro Score Progression](Backend_Model/Images/hamming_accuracy_progression.png)
-
-#### Crime Classification Accuracy Progression
-Crime type classification achieves near-perfect accuracy within the first 5 epochs (99%+), stabilizing at essentially 100% accuracy. This demonstrates the model's exceptional ability to categorize crime types even with limited training data.
-
-![Crime Classification Accuracy Progression](Backend_Model/Images/crime_confusion_matrix_normalized.png)
+![Training Metrics Progression](Backend_Model/Images/training_metrics_comparison.png)
 
 #### Embedding Space Visualization
 
@@ -174,22 +169,21 @@ The t-SNE visualization reveals that the model's internal representations form w
 
 ### Complete Architecture Diagram
 
-The following diagram illustrates the complete RAG-HGAT architecture flow:
+The following diagram illustrates the complete RAG-HGAT model architecture:
 
-![RAG-HGAT Model Architecture](Backend_Model/Images/model_architecture.png)
+![RAG-HGAT Model Architecture](Backend_Model/Images/architect.png)
 
-**Architecture Flow Explanation**:
-1. **Input**: Crime complaint text enters the system
-2. **Dual Path Processing**:
-   - **Left Path**: Legal-BERT encoder converts text to 768-dim semantic embeddings
-   - **Right Path**: BNS Knowledge Base and SentenceRAG_HGAT_Architecture_IEEErm Top-20 retrieval
-3. **Feature Fusion**: RAG scores (scaled 10x) concatenated with BERT embeddings (825-dim total)
-4. **Graph Processing**: 57 BNS section nodes create relationship graph with 278 edges
-5. **Multi-Head Attention**: Case-level multi-head attention with 4 parallel heads
-6. **Cross-Attention Module**: Case features query section graph features
-7. **Shared Base Layer**: Fuses all information (1536-dim)
-8. **Output Heads**: Dual classification for sections (57 expert classifiers) and crime type (13 classes)
-9. **Final Predictions**: Legal section logits + crime type classification
+**Architecture Overview**:
+The diagram shows the complete flow of the RAG-HGAT system:
+- **Input Layer**: Crime complaint text
+- **Dual Encoding Paths**: Legal-BERT for semantic encoding + BNS Knowledge Base for semantic retrieval
+- **Feature Fusion**: Combines BERT embeddings with scaled RAG similarity scores (825-dim)
+- **Graph Construction**: 57 BNS sections with relationships and co-occurrence patterns
+- **Graph Processing**: Multi-Head Attention with hierarchical graph attention layers
+- **Cross-Attention**: Case-level attention mechanism to identify relevant sections
+- **Shared Base Layer**: Feature fusion combining all components (1536-dim)
+- **Output Heads**: Dual classifiers for section prediction (57 expert classifiers) and crime type (13 classes)
+- **Final Output**: Predicted legal sections + crime type classification with confidence scores
 
 ### Architecture Components
 
@@ -446,6 +440,62 @@ Exceptions: Provocation, Self-defence excess
 **Performance Metrics Tracked**:
 - **Sections (Multi-label)**: Hamming accuracy, exact match, F1 (micro/macro/weighted/sample), precision-recall
 - **Crime Types (Multi-class)**: Standard multi-class accuracy
+
+### Training & Performance Visualizations
+
+#### Loss Convergence
+
+The loss convergence graph demonstrates the model's learning stability throughout training. The loss decreases rapidly in early epochs and converges smoothly, indicating effective optimization and absence of gradient instabilities. The convergence pattern confirms proper hyperparameter selection and training dynamics.
+
+![Loss Convergence](Backend_Model/Images/loss_convergence.png)
+
+#### Classification Performance
+
+Comprehensive classification metrics showing the model's performance on both section classification and crime type prediction tasks with detailed accuracy breakdowns.
+
+![Classification Performance](Backend_Model/Images/classifif.png)
+
+#### Training Metrics Comparison
+
+Complete comparison of all key training metrics side-by-side, including accuracy, precision, recall, and F1-score across epochs for both training and validation sets.
+
+![Training Metrics Comparison](Backend_Model/Images/training_metrics_comparison.png)
+
+#### Crime Type Confusion Matrix
+
+Confusion matrix for crime type classification (13 classes), showing the model's performance on single-label crime category prediction with near-perfect diagonal values.
+
+![Crime Type Confusion Matrix](Backend_Model/Images/crime_confusion_matrix.png)
+
+#### Section Performance Analysis
+
+Per-section performance metrics showing how the model performs individually on different BNS sections, highlighting strengths and areas for improvement.
+
+![Section Performance Analysis](Backend_Model/Images/section.png)
+
+#### Crime Type Support Distribution
+
+Visualization of crime type support distribution across the dataset, showing the frequency and balance of different crime classifications.
+
+![Crime Type Support Distribution](Backend_Model/Images/04_crime_type_support_distribution.png)
+
+#### Section Confusion Matrix Analysis
+
+Detailed confusion matrices for BNS sections, allowing deep analysis of prediction patterns and cross-section interactions.
+
+![Section Confusion Matrix Analysis](Backend_Model/Images/section_confusion_matrix_aggregated.png)
+
+#### Section Support Distribution
+
+Visualization of BNS section support distribution across the dataset, showing the frequency and balance of different legal sections in the training data.
+
+![Section Support Distribution](Backend_Model/Images/section_support_distribution.png)
+
+#### Error Analysis (FPR vs FNR)
+
+Detailed error analysis showing false positive rates (FPR) and false negative rates (FNR) per section, identifying which sections the model struggles with and why.
+
+![Error Analysis](Backend_Model/Images/19_per_section_error_analysis_fpr_fnr.png)
 
 ### Model Inference Flow
 
